@@ -1,20 +1,12 @@
-name: Run java and Python Programs
+name: CI
 on:
   push:
     branches:
       - main
 jobs:
-  run-java:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Set up Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-      - name: Compile java program
-        run: javac Action.java
-      - name: run Action
-        run: java Action.java
+      - uses: actions/checkout@v3
+      - name: Run tests
+        run: npm test
